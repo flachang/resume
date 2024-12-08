@@ -1,0 +1,38 @@
+{
+    "info": {
+        "name": "张子昂",
+        "contacts": [
+            {
+                "type": "phone",
+                "value": 15838097351
+            },
+            {
+                "type": "wechat",
+                "value": 15838097351
+            },
+            {
+                "type": "email",
+                "value": "zza46585@163.com"
+            }
+        ],
+        "description": ""
+    },
+    "education": {
+        "title": "教育经历",
+        "list": [
+            {
+                "school": "中国科学院生物物理研究所",
+                "during_date": "2018/09 - 2021/06",
+                "major": "生物工程"
+            },
+            {
+                "school": "",
+                "during_date": "2014/09 - 2018/06",
+                "major": "生物工程"
+            }
+        ]
+    },
+    "skills": {
+        "title": "相关技能"
+    }
+}
