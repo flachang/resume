@@ -1,8 +1,10 @@
 import { defineConfig } from '@rsbuild/core';
-import { pluginReact, PLUGIN_REACT_NAME } from '@rsbuild/plugin-react';
+
+import { pluginSass } from '@rsbuild/plugin-sass';
+import { pluginReact } from '@rsbuild/plugin-react';
 
 export default defineConfig({
-  plugins: [pluginReact()],
+  plugins: [pluginReact(), pluginSass()],
   html: {
     mountId: 'resume-app'
   }

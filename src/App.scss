@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  display: block;
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  
+}
+
+html {
+  scrollbar-color: unset;
+}
+
+.resume-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  padding: 40px 0;
+  background-color: #000;
+
+
+  &:hover {
+    .app-initial-mask {opacity: 1;}
+  }
+
+  .app-initial-container { 
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='16' height='16' fill='none'%3e%3ccircle fill='%23262626' id='pattern-circle' cx='10' cy='10' r='3'%3e%3c/circle%3e%3c/svg%3e");
+  }
+
+  .app-initial-mask {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: .15s;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='16' height='16' fill='none'%3e%3ccircle fill='%236366f1' id='pattern-circle' cx='10' cy='10' r='3'%3e%3c/circle%3e%3c/svg%3e");
+  }
+
+  .app-initial-children {
+    position: relative;
+    margin: auto;
+    padding: 30px;
+    background-color: #fff;
+    max-width: 800px;
+    z-index: 999;
+    border-radius: 4px;
+    color: red;
+  }
+}
