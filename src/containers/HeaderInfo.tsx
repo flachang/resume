@@ -1,12 +1,22 @@
-// import React from 'react'
-
 type HeaderInfoProps = {
 	headerInfo: string
 }
 
-
-export const HeaderInfo = ({headerInfo}: HeaderInfoProps) => {
+export const HeaderInfo = ({ headerInfo }: HeaderInfoProps) => {
 	return (
-		<>123</>
+		<>
+		<div className="person-info">
+			<div className="title">
+
+			</div>
+
+			<div className="sub-title">
+
+			</div>
+
+			<div className="contact-info">
+			</div>
+		</div>
+		</>
 	)
 }
