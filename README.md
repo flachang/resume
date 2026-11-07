@@ -1,4 +1,4 @@
-# 张子昂 · 简历
+#  简历
 
 基于 React + Rsbuild 的个人简历页。经历、技能和联系方式维护在 `src/config.json`。
 
