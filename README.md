@@ -1,29 +1,17 @@
-# Rsbuild Project
+# 张子昂 · 简历
 
-## Setup
+基于 React + Rsbuild 的个人简历页。经历、技能和联系方式维护在 `src/config.json`。
 
-Install the dependencies:
+## 开发
 
 ```bash
-pnpm install
+npm install
+npm run dev
 ```
 
-## Get Started
-
-Start the dev server:
+## 构建
 
 ```bash
-pnpm dev
-```
-
-Build the app for production:
-
-```bash
-pnpm build
-```
-
-Preview the production build locally:
-
-```bash
-pnpm preview
+npm run build
+npm run preview
 ```

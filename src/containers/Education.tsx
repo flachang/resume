@@ -6,26 +6,21 @@ type EducationProps = {
 
 export const Education = ({ education }: EducationProps) => {
 	return (
-		<div className="education-section">
+		<section className="education-section">
 			<h2 className="section-title">{education.title}</h2>
 			<div className="education-list">
-				{education.list.map((item, index) => (
-					<div key={index} className="education-item">
-						{item.school && (
-							<div className="education-school">{item.school}</div>
-						)}
-						<div className="education-details">
-							{item.major && (
-								<span className="education-major">{item.major}</span>
-							)}
+				{education.list.map((item) => (
+					<div key={item.school} className="education-item">
+						<div className="item-headline">
+							{item.school && <div className="education-school">{item.school}</div>}
 							{item.during_date && (
-								<span className="education-date">{item.during_date}</span>
+								<span className="item-date">{item.during_date}</span>
 							)}
 						</div>
+						{item.major && <div className="education-major">{item.major}</div>}
 					</div>
 				))}
 			</div>
-		</div>
+		</section>
 	);
 };
-

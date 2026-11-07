@@ -22,14 +22,52 @@ export interface Education {
 	list: EducationItem[];
 }
 
+export interface SkillGroup {
+	category: string;
+	items: string[];
+}
+
 export interface Skills {
 	title: string;
-	list?: string[];
+	groups: SkillGroup[];
+}
+
+export interface ProjectItem {
+	name: string;
+	link?: string;
+	role: string;
+	actions: string[];
+	results: string[];
+}
+
+export interface Projects {
+	title: string;
+	list: ProjectItem[];
+}
+
+export interface WorkItem {
+	company: string;
+	during_date: string;
+	position: string;
+	org: string;
+	highlights: string[];
+}
+
+export interface Work {
+	title: string;
+	list: WorkItem[];
+}
+
+export interface Thanks {
+	title: string;
+	text: string;
 }
 
 export interface ResumeData {
 	info: Info;
 	education: Education;
 	skills: Skills;
+	projects: Projects;
+	work: Work;
+	thanks: Thanks;
 }
-

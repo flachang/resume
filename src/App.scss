@@ -1,10 +1,23 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#resume-app {
+  min-height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
   color: #fff;
   display: block;
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  
+  background-color: #000;
+  font-family: Inter, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    Avenir, Helvetica, Arial, sans-serif;
 }
 
 html {
@@ -14,17 +27,18 @@ html {
 .resume-content {
   position: relative;
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
   margin: auto;
-  padding: 40px 0;
+  padding: 40px 16px;
   background-color: #000;
 
-
   &:hover {
-    .app-initial-mask {opacity: 1;}
+    .app-initial-mask {
+      opacity: 1;
+    }
   }
 
-  .app-initial-container { 
+  .app-initial-container {
     position: absolute;
     inset: 0;
     pointer-events: none;
@@ -36,9 +50,9 @@ html {
     inset: 0;
     pointer-events: none;
     opacity: 0;
-    transition-property: all;
-    transition-timing-function: cubic-bezier(.4,0,.2,1);
-    transition-duration: .15s;
+    transition-property: opacity;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.15s;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='16' height='16' fill='none'%3e%3ccircle fill='%236366f1' id='pattern-circle' cx='10' cy='10' r='3'%3e%3c/circle%3e%3c/svg%3e");
   }
 
@@ -48,149 +62,390 @@ html {
     padding: 40px 50px;
     background-color: #fff;
     max-width: 800px;
-    z-index: 999;
+    z-index: 1;
     border-radius: 8px;
-    color: #333;
+    color: #111;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    line-height: 1.7;
   }
 }
 
-// Person Info Styles
 .person-info {
-  margin-bottom: 40px;
-  padding-bottom: 30px;
-  border-bottom: 2px solid #e5e7eb;
-
-  .title {
-    margin-bottom: 10px;
-
-    h1 {
-      margin: 0;
-      font-size: 32px;
-      font-weight: 700;
-      color: #1f2937;
-      letter-spacing: -0.5px;
-    }
-  }
-
-  .sub-title {
-    margin-bottom: 20px;
-
-    p {
-      margin: 0;
-      font-size: 16px;
-      color: #6b7280;
-      line-height: 1.6;
-    }
+  .title h1 {
+    margin: 0 0 6px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #111;
+    letter-spacing: 0;
   }
 
   .contact-info {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 15px;
+    gap: 4px 18px;
+    color: #111;
 
     .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 4px;
       font-size: 14px;
-      color: #4b5563;
+    }
 
-      .contact-type {
-        font-weight: 500;
-        color: #6b7280;
-      }
+    .contact-value {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
 
-      .contact-value {
-        color: #1f2937;
-        text-decoration: none;
-        transition: color 0.2s;
+  .sub-title {
+    margin-top: 6px;
 
-        &:hover {
-          color: #6366f1;
-        }
-      }
+    p {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 400;
+      color: #111;
+      line-height: 1.7;
     }
   }
 }
 
-// Section Styles
 .section-title {
-  margin: 0 0 20px 0;
-  font-size: 22px;
-  font-weight: 600;
-  color: #1f2937;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #6366f1;
+  margin: 18px 0 8px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #111;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111;
 }
 
-// Education Styles
-.education-section {
-  margin-bottom: 40px;
-  padding-bottom: 30px;
-  border-bottom: 2px solid #e5e7eb;
+.item-headline {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
 
-  .education-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.item-date {
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 400;
+  color: #111;
+  white-space: nowrap;
+}
+
+.education-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.education-item {
+  .education-school {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #111;
   }
 
-  .education-item {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  .education-major {
+    margin-top: 1px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #111;
+  }
+}
 
-    .education-school {
-      font-size: 18px;
+.work-company {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #111;
+}
+
+.work-meta {
+  margin: 1px 0 0;
+  font-size: 14px;
+  color: #111;
+
+  strong {
+    font-weight: 700;
+  }
+
+  span {
+    margin-left: 10px;
+    font-weight: 400;
+  }
+}
+
+.project-item {
+  margin-top: 12px;
+
+  &:first-child {
+    margin-top: 2px;
+  }
+}
+
+.project-name {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #111;
+  line-height: 1.6;
+}
+
+.project-link {
+  margin-left: 8px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #0563c1;
+  text-decoration: underline;
+  word-break: break-all;
+}
+
+.field-label {
+  margin: 8px 0 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+}
+
+.field-value {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  color: #111;
+}
+
+.resume-list {
+  margin: 2px 0 0;
+  padding-left: 1.3em;
+
+  li {
+    margin: 2px 0;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #111;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+}
+
+.thanks-text {
+  margin: 2px 0 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #111;
+}
+
+@media (max-width: 640px) {
+  .resume-content {
+    padding: 16px 10px;
+
+    .app-initial-children {
+      padding: 28px 18px;
+    }
+  }
+
+  .project-link {
+    display: inline;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  html,
+  body,
+  #resume-app {
+    height: auto;
+    min-height: 0;
+    background: #fff;
+  }
+
+  body {
+    color: #000;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .resume-content {
+    min-height: 0;
+    padding: 0;
+    background: #fff;
+
+    .app-initial-children {
+      max-width: none;
+      width: auto;
+      margin: 0;
+      padding: 31px 34px 48px;
+      border-radius: 0;
+      box-shadow: none;
+      background: #fff;
+      font-family: "Avenir Next", Avenir, "PingFang SC", "Hiragino Sans GB",
+        sans-serif;
+      font-size: 12px;
+      line-height: 18px;
+      color: #000;
+    }
+  }
+
+  .app-initial-container,
+  .app-initial-mask {
+    display: none;
+  }
+
+  .person-info {
+    .title h1 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 25px;
       font-weight: 600;
       color: #1f2937;
     }
 
-    .education-details {
-      display: flex;
-      gap: 15px;
-      align-items: center;
-      font-size: 14px;
-      color: #6b7280;
+    .contact-info {
+      margin-top: 0;
+      gap: 0 26px;
+      color: #1f2937;
 
-      .education-major {
-        font-weight: 500;
-        color: #4b5563;
+      .contact-item {
+        gap: 0;
+        font-size: 12px;
+        line-height: 18px;
       }
 
-      .education-date {
-        color: #9ca3af;
+      .contact-type {
+        color: #6b7280;
+        font-weight: 400;
+      }
+
+      .contact-type::after {
+        content: " ";
+      }
+
+      .contact-value {
+        color: #1f2937;
+        font-weight: 400;
+        text-decoration: none;
+      }
+    }
+
+    .sub-title {
+      margin-top: 3px;
+
+      p {
+        font-size: 12px;
+        line-height: 18px;
+        color: #6b7280;
       }
     }
   }
-}
 
-// Skills Styles
-.skills-section {
-  margin-bottom: 20px;
-
-  .skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+  .section-title {
+    margin: 12px 0 6px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #000;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 600;
+    color: #000;
   }
 
-  .skill-item {
-    display: inline-block;
-    padding: 6px 14px;
-    background-color: #f3f4f6;
-    border-radius: 20px;
-    font-size: 14px;
+  .item-date,
+  .education-item .education-school,
+  .work-company,
+  .project-name {
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 600;
     color: #1f2937;
-    font-weight: 500;
-    transition: all 0.2s;
+  }
 
-    &:hover {
-      background-color: #6366f1;
-      color: #fff;
-      transform: translateY(-2px);
+  .education-list {
+    gap: 6px;
+  }
+
+  .education-item .education-major,
+  .field-label,
+  .field-value,
+  .work-meta,
+  .thanks-text,
+  .resume-list li {
+    font-size: 12px;
+    line-height: 18px;
+    color: #000;
+  }
+
+  .education-item .education-major {
+    margin-top: 0;
+    font-weight: 400;
+  }
+
+  .education-item .item-date {
+    font-weight: 400;
+  }
+
+  .work-section .item-date {
+    font-size: 12px;
+    font-weight: 400;
+    color: #6b7280;
+  }
+
+  .work-meta {
+    margin: 0;
+
+    span {
+      margin-left: 16px;
+      font-weight: 400;
+    }
+  }
+
+  .project-item {
+    margin-top: 10px;
+
+    &:first-child {
+      margin-top: 4px;
+    }
+  }
+
+  .project-name {
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .project-link {
+    margin-left: 8px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #0000ee;
+    text-decoration: underline;
+  }
+
+  .field-label {
+    margin: 2px 0 0;
+    font-weight: 700;
+  }
+
+  .field-value,
+  .thanks-text {
+    margin: 0;
+    font-weight: 400;
+  }
+
+  .resume-list {
+    margin: 0;
+    padding-left: 20px;
+
+    li {
+      margin: 0;
     }
   }
 }

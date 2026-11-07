@@ -15,21 +15,42 @@ const getContactLabel = (type: string): string => {
 	return labels[type] || type;
 };
 
-const getContactHref = (type: string, value: string | number): string => {
+const getContactHref = (type: string, value: string | number): string | undefined => {
 	if (type === 'email') {
 		return `mailto:${value}`;
 	}
 	if (type === 'phone') {
 		return `tel:${value}`;
 	}
-	return '#';
+	if (type === 'github' || type === 'linkedin') {
+		return String(value);
+	}
+	return undefined;
 };
 
 export const HeaderInfo = ({ info }: HeaderInfoProps) => {
 	return (
-		<div className="person-info">
+		<header className="person-info">
 			<div className="title">
 				<h1>{info.name}</h1>
+			</div>
+
+			<div className="contact-info">
+				{info.contacts.map((contact) => {
+					const href = getContactHref(contact.type, contact.value);
+					return (
+						<span key={contact.type} className="contact-item">
+							<span className="contact-type">{getContactLabel(contact.type)}:</span>
+							{href ? (
+								<a href={href} className="contact-value">
+									{contact.value}
+								</a>
+							) : (
+								<span className="contact-value">{contact.value}</span>
+							)}
+						</span>
+					);
+				})}
 			</div>
 
 			{info.description && (
@@ -37,24 +58,6 @@ export const HeaderInfo = ({ info }: HeaderInfoProps) => {
 					<p>{info.description}</p>
 				</div>
 			)}
-
-			<div className="contact-info">
-				{info.contacts.map((contact, index) => (
-					<span key={index} className="contact-item">
-						<span className="contact-type">{getContactLabel(contact.type)}:</span>
-						{contact.type === 'email' || contact.type === 'phone' ? (
-							<a
-								href={getContactHref(contact.type, contact.value)}
-								className="contact-value"
-							>
-								{contact.value}
-							</a>
-						) : (
-							<span className="contact-value">{contact.value}</span>
-						)}
-					</span>
-				))}
-			</div>
-		</div>
+		</header>
 	);
 };
