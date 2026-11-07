@@ -6,8 +6,11 @@
 # Dist
 node_modules
 dist/
+src/config.json
 
 # IDE
 .vscode/*
 !.vscode/extensions.json
 .idea
+
+
